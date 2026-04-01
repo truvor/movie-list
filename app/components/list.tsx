@@ -2,11 +2,12 @@
 
 import { useState, useEffect } from "react";
 
+declare const Temporal: any;
 type Movie = {
   id: number;
   title: string;
   description: string;
-  popularity: string;
+  popularity: number;
   release_date: string;
 };
 
