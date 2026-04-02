@@ -31,7 +31,7 @@ export default function MoviePage({ params }: { params: Promise<{ id: string }> 
         <> {movie && <div className='flex flex-col'>
             <Image src={movie.poster_path || ''} alt={movie?.title || ''} width={200} height={200} />
             <h1>{movie?.title}</h1>
-            <p>{movie?.description}</p>
+            <p>{movie?.overview}</p>
             <span>Popularity: {movie?.popularity}</span>
             <span>Release Date: {movie?.release_date}</span>
         </div>}</>
