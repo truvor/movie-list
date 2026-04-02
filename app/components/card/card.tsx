@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Movie } from "@/app/types/movie";
 import styles from "./card.module.css";
+import Favorite from "../favorite";
 
 export default function Card({ movie }: { movie: Movie }) {
     return (
@@ -20,6 +21,7 @@ export default function Card({ movie }: { movie: Movie }) {
                         alt="Details"
                     />
                 </Link>
+                <Favorite id={movie.id} />
             </div>
             <div className="flex flex-col text-sm pl-1">
                 <p className={styles.overview}>{movie.overview}</p>
