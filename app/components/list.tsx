@@ -12,13 +12,15 @@ export default function List() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const currentDate = Temporal.Now.plainDateISO().toLocaleString("en-US", {
+    setToday(Temporal.Now.plainDateISO().toLocaleString("en-US", {
       day: "numeric",
       month: "long",
-    });
-    setToday(currentDate.toString());
+    }));
+    const now = Temporal.Now.zonedDateTimeISO();
+    const startOfTomorrow = now.add({ days: 1 }).startOfDay();
+    const seconds = Math.round(startOfTomorrow.since(now).total({ unit: "seconds" }));
 
-    fetch('/api/movies').then(res => res.json()).then(data => {
+    fetch(`/api/movies?revalidate=${seconds}`).then(res => res.json()).then(data => {
       setMovies(data)
     }).catch(error => {
       setError(error.message)
