@@ -1,4 +1,5 @@
 import { NextRequest } from 'next/server';
+import { Movie } from '@/app/types/movie';
 
 export async function GET(request: NextRequest,
     { params }: { params: Promise<{ id: string }> }) {
@@ -15,10 +16,10 @@ export async function GET(request: NextRequest,
         }
 
         const data = await res.json();
-        const movie = {
+        const movie: Movie = {
             id: data.id,
             title: data.title,
-            description: data.overview,
+            overview: data.overview,
             popularity: data.popularity,
             release_date: data.release_date,
             poster_path: process.env.IMG_PATH + data.poster_path,

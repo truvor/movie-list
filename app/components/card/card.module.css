@@ -1,0 +1,27 @@
+.title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: bold;
+}
+
+.details {
+    border-radius: 0.5rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    background-color: oklch(95.1% 0.026 236.824)
+}
+
+.details:hover {
+    transform: translateY(-2px);
+    background-color: oklch(80.9% 0.105 251.813);
+}
+
+
+
+.overview {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
