@@ -1,15 +1,10 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { Movie } from "@/app/types/movie";
+import Card from "./card";
 
 declare const Temporal: any;
-type Movie = {
-  id: number;
-  title: string;
-  description: string;
-  popularity: number;
-  release_date: string;
-};
 
 export default function List() {
   const [today, setToday] = useState<string | null>(null);
@@ -36,18 +31,11 @@ export default function List() {
         movies.length > 0 &&
         <>
           <h1 className="pb-2">Trending movies on {today}:</h1>
-          <ul>
-            {movies.map((item) => {
-              return (
-                <li key={item.id} className="flex flex-col w-full pb-2">
-                  <span>Title: {item.title}</span>
-                  <span>Description: {item.description}</span>
-                  <span>Popularity: {item.popularity}</span>
-                  <span>Release Date: {item.release_date}</span>
-                </li>
-              );
-            })}
-          </ul>
+          {movies.map((item) => {
+            return (
+              <Card key={item.id} movie={item} />
+            );
+          })}
         </>
       }
     </>
