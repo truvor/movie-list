@@ -19,7 +19,6 @@ export async function GET(request: NextRequest) {
 
         const data = await res.json();
         if (data.results && Array.isArray(data.results)) {
-            console.log('lol')
             return Response.json(data.results);
         } else {
             throw new Error('Invalid response from movie API');
